@@ -11,12 +11,12 @@ public class Game
 	public HashMap<String, HashMap<String, Integer>> Minecraft()
 	{
 		String csvFile = "src/allcrafting-mc.csv";
-		
+			
 		ArrayList<String> list = new ArrayList<>();
 		list = readWithBR(csvFile);
-			
+				
 		HashMap<String, HashMap<String, Integer>> basic = new HashMap<>();
-		HashMap<String, Integer> tempHM = new HashMap<>();
+		HashMap<String, Integer> itemB = new HashMap<>();
 		for(int i = 0; i < list.size(); i++)
 		{
 			if(list.get(i).contains("Basic"))
@@ -26,24 +26,47 @@ public class Game
 				//System.out.println(Arrays.toString(tempList2));
 					
 					
-				tempHM.put("Quantity", Integer.parseInt(tempList2[1]));
-				basic.put(tempList2[2], tempHM);
+				itemB.put("Quantity", Integer.parseInt(tempList2[1]));
+				basic.put(tempList2[2], itemB);
 					
 				int k = 3, v = 4;
 				for(int j = 0; j < tempList2.length-4; j+=2)
 				{	
-					tempHM.put(tempList2[k], Integer.parseInt(tempList2[v]));
-					basic.put(tempList2[2], tempHM);
+					itemB.put(tempList2[k], Integer.parseInt(tempList2[v]));
+					basic.put(tempList2[2], itemB);
 					k += 2;
 					v += 2;
 				}
-				for(String z : basic.keySet())
-				{
-						System.out.println("key: " + z + "\nvalue" + basic.get(z));
-				}
+					
+				System.out.println(basic);
+					
+			}
+			else if(list.get(i).contains("Block"))
+			{
+				//System.out.println("block work");
+			}
+			else if(list.get(i).contains("Tool"))
+			{
+				//System.out.println("tool work");
+			}
+			else if(list.get(i).contains("Defense"))
+			{
+				//System.out.println("defense work");
+			}
+			else if(list.get(i).contains("Mechanism"))
+			{
+				//System.out.println("mechanism work");
+			}
+			else if(list.get(i).contains("Food"))
+			{
+				//System.out.println("food work");
+			}
+			else if(list.get(i).contains("Other"))
+			{
+				//System.out.println("other work");
 			}
 		}
-		
+			
 		return basic;
 	}
 	
