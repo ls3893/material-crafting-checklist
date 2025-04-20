@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-public class GameTester
+public class Game
 {
 	public HashMap<String, ArrayList<String>> Minecraft(String category)
 	{
