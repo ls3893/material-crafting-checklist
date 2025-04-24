@@ -6,7 +6,7 @@ import java.lang.Integer;
 
 public class Item
 {
-	public Game game = new Game();
+	public Game game = new GameTester();
 	public Scanner kb;
 	public String gameChoice;
 	public String category;
@@ -105,7 +105,7 @@ public class Item
 	}
 	
 	//Gets base recipe 
-	public HashMap<String, Integer> getRecipe()
+	public HashMap<String, Integer> getRecipe(String category, String ID)
 	{
 		HashMap<String, Integer> recipe = new HashMap<>();
 		this.recipe = recipe;
@@ -130,7 +130,7 @@ public class Item
 	}
 	
 	//Gets yielded amount of items made by recipe
-	public int getCount()
+	public int getCount(String category, String ID)
 	{
 		if(gameChoice.equals("Minecraft"))
 		{
@@ -168,12 +168,41 @@ public class Item
 	}
 	
 	//Updates recipe to have proper amount of materials per wanted number of items by user
-	public HashMap<String, Integer> updatedQuantities()
+	public HashMap<String, Integer> updatedRecipeQuantities(String category, String ID)
 	{
+		HashMap<String, Integer> recipe = getRecipe(category, ID);
+		int count = getCount(category, ID);
+
+		boolean flag = false; 
+		int mult = 1;
+		if(quantity <= count)
+		{
+			System.out.println("i work 1");
+			flag = true;
+		}
+		else if (quantity > count)
+		{
+			System.out.println("i work 2");
+			int num = count;
+			while(flag != true)
+			{
+				num *= mult;
+				if(num >= quantity)
+				{
+					System.out.println("i work 3");
+					flag = true;
+				}
+				else
+				{
+					mult++;
+				}
+			}
+		}
+		
 		for(String key : recipe.keySet())
 		{
 			Integer value = recipe.get(key);
-			value = value * quantity;
+			value = value * mult;
 			recipe.put(key, value);
 		}
 		
