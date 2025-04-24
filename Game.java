@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Map;
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -147,43 +148,43 @@ public class Game
 			}
 		}
 		
-		if(category == "Basic")
+		if(category.equals("Basic"))
 		{
 			return basic;
 		}
-		else if(category == "Block")
+		else if(category.equals("Block"))
 		{
 			return block;
 		}
-		else if(category == "Tool")
+		else if(category.equals("Tool"))
 		{
 			return tool;
 		}
-		else if(category == "Defense")
+		else if(category.equals("Defense"))
 		{
 			return defense;
 		}
-		else if(category == "Mechanism")
+		else if(category.equals("Mechanism"))
 		{
 			return mechanism;
 		}
-		else if(category == "Food")
+		else if(category.equals("Food"))
 		{
 			return food;
 		}
-		else if(category == "Other")
+		else if(category.equals("Other"))
 		{
 			return other;
 		}
-		else if(category == "Dye")
+		else if(category.equals("Dye"))
 		{
 			return dye;
 		}
-		else if(category == "Wool")
+		else if(category.equals("Wool"))
 		{
 			return wool;
 		}
-		else if(category == "Brewing")
+		else if(category.equals("Brewing"))
 		{
 			return brewing;
 		}
@@ -426,71 +427,71 @@ public class Game
 			
 		}
 		
-		if(category == "Bombs")
+		if(category.equals("Bombs"))
 		{
 			return bombs;
 		}
-		else if(category == "Fences")
+		else if(category.equals("Fences"))
 		{
 			return fences;
 		}
-		else if(category == "Sprinklers")
+		else if(category.equals("Sprinklers"))
 		{
 			return sprinklers;
 		}
-		else if(category == "Artisan Equipment")
+		else if(category.equals("Artisan Equipment"))
 		{
 			return artisanEquipment;
 		}
-		else if(category == "Fertilizer")
+		else if(category.equals("Fertilizer"))
 		{
 			return fertilizer;
 		}
-		else if(category == "Seeds")
+		else if(category.equals("Seeds"))
 		{
 			return seeds;
 		}
-		else if (category == "Decor")
+		else if (category.equals("Decor"))
 		{
 			return decor;
 		}
-		else if(category == "Fishing")
+		else if(category.equals("Fishing"))
 		{
 			return fishing;
 		}
-		else if(category == "Rings")
+		else if(category.equals("Rings"))
 		{
 			return rings;
 		}
-		else if(category == "Edible Items")
+		else if(category.equals("Edible Items"))
 		{
 			return edibleItems;
 		}
-		else if(category == "Consumables")
+		else if(category.equals("Consumables"))
 		{
 			return consumables;
 		}
-		else if(category == "Lighting")
+		else if(category.equals("Lighting"))
 		{
 			return lighting;
 		}
-		else if(category == "Refining Equipment")
+		else if(category.equals("Refining Equipment"))
 		{
 			return refiningEquipment;
 		}
-		else if(category == "Furniture")
+		else if(category.equals("Furniture"))
 		{
 			return furniture;
 		}
-		else if(category == "Storage Equipment")
+		else if(category.equals("Storage Equipment"))
 		{
 			return storageEquipment;
 		}
-		else if(category == "Signs")
+		else if(category.equals("Signs"))
 		{
 			return signs;
 		}
-		else if(category == "Misc")
+		else if(category.equals("Misc"))
 		{
 			return misc;
 		}
@@ -499,6 +500,23 @@ public class Game
 			return null;
 		}
 		
+	}
+	
+	public static Map<String, ArrayList<String>> sorting(ArrayList<String> list, int i)
+	{
+		String string = list.get(i);
+		String[] array = string.split(",");
+			
+		ArrayList<String> arrayList = new ArrayList<>();
+			
+		for(int j = 0; j < array.length-2; j++)
+			arrayList.add(array[2+j].toString());
+			
+		Map<String, ArrayList<String>> entry = new HashMap<>();
+			
+		entry.put(array[1], arrayList);
+			
+		return entry;
 	}
 	
 	public static ArrayList<String> readWithBR(String csvFile) throws UnsupportedOperationException
