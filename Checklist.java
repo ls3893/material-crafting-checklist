@@ -72,7 +72,12 @@ public class Checklist
 	
 	public Item editItemQuantity(Item item)
 	{
-		return null;
+		int newQuantity = kb.nextInt();
+		
+		item.setQuantity(newQuantity);
+		item.updatedRecipeQuantities();
+		
+		return item;
 	}
 	
 }
