@@ -197,7 +197,6 @@ public class Item
 	{
 		recipe = getRecipe();
 		harvest = getHarvest();
-		System.out.println(recipe.keySet());
 	
 		boolean flag = false; 
 		int mult = 1;
@@ -206,6 +205,7 @@ public class Item
 		{
 			int num = harvest;
 			num *= mult;
+			
 			if(num >= quantity)
 			{
 				flag = true;
