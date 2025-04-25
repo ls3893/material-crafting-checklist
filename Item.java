@@ -1,30 +1,55 @@
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Scanner;
 import java.util.Set;
 import java.lang.Integer;
 
 public class Item
 {
-	public Game game = new GameTester();
-	public Scanner kb;
+	public Game game = new Game();
 	public String gameChoice;
 	public String category;
 	public String ID;
 	public HashMap<String, Integer> recipe;
-	public int recipeCount;
+	public int harvest;
 	public String recipeSource;
 	public int quantity;
+	
+	
+	public String choice1;
+	public String choice2;
+	public String choice3;
+	public int choice4;
 
+	public Item()
+	{
+		gameChoice = "";
+		category = "";
+		ID = "";
+		recipe = null;
+		harvest = 0;
+		recipeSource = "";
+		quantity = 0;
+	}
+	
+	public Item(String gameChoice, String category, String ID, HashMap<String, Integer> recipe, String recipeSource, int quantity)
+	{
+		this.gameChoice = gameChoice;
+		this.category = category;
+		this.ID = ID;
+		this.recipe = recipe;
+		this.recipeSource = recipeSource;
+		this.quantity = quantity;
+	}
+	
 	//Displays game selection choices
 	public void displayGames()
 	{
 		System.out.println("Minecraft or Stardew Valley");
 	}
 	
-	public String getGame(Scanner kb)
+	public String getGame(String choice1)
 	{
-		this.gameChoice = kb.nextLine();
+		gameChoice = choice1;
 		
 		return gameChoice;
 	}
@@ -67,9 +92,9 @@ public class Item
 	}
 	
 	//Gets the category
-	public String getCategory(Scanner kb)
+	public String getCategory(String choice2)
 	{
-		this.category = kb.nextLine();
+		category = choice2;
 		
 		return category;
 	}
@@ -97,15 +122,15 @@ public class Item
 	}
 	
 	//Gets item name 
-	public String getID(Scanner kb)
+	public String getID(String choice3)
 	{
-		this.ID = kb.nextLine();
+		ID = choice3;
 		
 		return ID;
 	}
 	
 	//Gets base recipe 
-	public HashMap<String, Integer> getRecipe(String category, String ID)
+	public HashMap<String, Integer> getRecipe()
 	{
 		HashMap<String, Integer> recipe = new HashMap<>();
 		this.recipe = recipe;
@@ -121,7 +146,7 @@ public class Item
 		else if(gameChoice.equals("Stardew Valley"))
 		{
 			ArrayList<String> list = game.StardewValley(category).get(ID);
-			for(int i = 1; i < list.size()-2; i+=2)
+			for(int i = 2; i < list.size()-1; i+=2)
 			{
 				recipe.put(list.get(i), Integer.parseInt(list.get(i+1)));
 			}
@@ -130,19 +155,19 @@ public class Item
 	}
 	
 	//Gets yielded amount of items made by recipe
-	public int getCount(String category, String ID)
+	public int getHarvest()
 	{
 		if(gameChoice.equals("Minecraft"))
 		{
 			ArrayList<String> list = game.Minecraft(category).get(ID);
-			this.recipeCount = Integer.parseInt(list.get(2));
+			harvest = Integer.parseInt(list.get(0));
 		}
 		else if(gameChoice.equals("Stardew Valley"))
 		{
 			ArrayList<String> list = game.StardewValley(category).get(ID);
-			this.recipeCount = Integer.parseInt(list.get(2));
+			harvest = Integer.parseInt(list.get(0));
 		}
-		return recipeCount;
+		return harvest;
 	}
 	
 	public String getRecipeSource()
@@ -150,7 +175,7 @@ public class Item
 		if(gameChoice.equals("Stardew Valley"))
 		{
 			ArrayList<String> list = game.StardewValley(category).get(ID);
-			this.recipeSource = list.get(3);
+			recipeSource = list.get(1);
 			
 			return recipeSource;
 		}
@@ -161,41 +186,33 @@ public class Item
 		
 	}
 	
-	public int getQuantity(Scanner kb)
+	public int getQuantity(int choice4)
 	{
-		this.quantity = kb.nextInt();
+		quantity = choice4;
 		return quantity;
 	}
 	
 	//Updates recipe to have proper amount of materials per wanted number of items by user
-	public HashMap<String, Integer> updatedRecipeQuantities(String category, String ID)
+	public HashMap<String, Integer> updatedRecipeQuantities()
 	{
-		HashMap<String, Integer> recipe = getRecipe(category, ID);
-		int count = getCount(category, ID);
-
+		recipe = getRecipe();
+		harvest = getHarvest();
+		System.out.println(recipe.keySet());
+	
 		boolean flag = false; 
 		int mult = 1;
-		if(quantity <= count)
+		int num = harvest;
+	
+		while(flag != true)
 		{
-			System.out.println("i work 1");
-			flag = true;
-		}
-		else if (quantity > count)
-		{
-			System.out.println("i work 2");
-			int num = count;
-			while(flag != true)
+			num *= mult;
+			if(num >= quantity)
 			{
-				num *= mult;
-				if(num >= quantity)
-				{
-					System.out.println("i work 3");
-					flag = true;
-				}
-				else
-				{
-					mult++;
-				}
+				flag = true;
+			}
+			else
+			{
+				mult++;
 			}
 		}
 		
@@ -207,5 +224,16 @@ public class Item
 		}
 		
 		return recipe;
+	}
+	
+	public String toString()
+	{
+		return String.format("Game: %s\nCategory: %s\nID: %s\nRecipe: %s\nRecipe Source: %s\nQuantity: %d" , 
+							gameChoice,
+							category,
+							ID, 
+							recipe, 
+							recipeSource,
+							quantity);
 	}
 }
