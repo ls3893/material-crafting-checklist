@@ -2,9 +2,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class ChecklistTester
+public class Checklist
 {
-	public ItemTester item = new ItemTester();
+	public Item item = new Item();
 	public Scanner kb = new Scanner(System.in);
 	public String gameChoice;
 	public String category;
@@ -34,16 +34,16 @@ public class ChecklistTester
 		
 		recipe = item.updatedRecipeQuantities();
 		
-		ItemTester newItem = new ItemTester(gameChoice, category, ID, recipe, recipeSource, quantity);
+		Item newItem = new ItemTester(gameChoice, category, ID, recipe, recipeSource, quantity);
 		
 		return newItem;
 	}
 	
-	public void removeItem(ArrayList<ItemTester> list)
+	public void removeItem(ArrayList<Item> list)
 	{
 		boolean found = false; 
 		
-		ItemTester currentItem;
+		Item currentItem;
 		
 		System.out.println("Enter ID of item to remove: ");
 		String desc = kb.nextLine();
@@ -70,7 +70,7 @@ public class ChecklistTester
 		
 	}
 	
-	public ItemTester editItemQuantity(ItemTester item)
+	public Item editItemQuantity(Item item)
 	{
 		return null;
 	}
