@@ -14,7 +14,7 @@ public class Checklist
 	public String recipeSource;
 	public int quantity;
 	
-	public ItemTester addItem()
+	public Item addItem()
 	{
 		item.displayGames();
 		String choice1 = kb.nextLine();
@@ -34,7 +34,7 @@ public class Checklist
 		
 		recipe = item.updatedRecipeQuantities();
 		
-		Item newItem = new ItemTester(gameChoice, category, ID, recipe, recipeSource, quantity);
+		Item newItem = new Item(gameChoice, category, ID, recipe, recipeSource, quantity);
 		
 		return newItem;
 	}
