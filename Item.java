@@ -201,10 +201,10 @@ public class Item
 	
 		boolean flag = false; 
 		int mult = 1;
-		int num = harvest;
 	
 		while(flag != true)
 		{
+			int num = harvest;
 			num *= mult;
 			if(num >= quantity)
 			{
