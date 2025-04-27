@@ -1,5 +1,4 @@
 import java.util.HashMap;
-import java.util.Map;
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -28,121 +27,71 @@ public class Game
 		{
 			if(list.get(i).contains("Basic_"))
 			{
-				String list1 = list.get(i);
-				String[] array1 = list1.split(",");
-				
-				ArrayList<String> arrayList1 = new ArrayList<>();
-				
-				for(int j = 0; j < array1.length-2; j++)
-					arrayList1.add(array1[2+j].toString());
+				String[] array1 = splitter(list, i);
+				ArrayList<String> arrayList1 = listEntry(array1);
 				
 				basic.put(array1[1], arrayList1);
 			}
 			else if(list.get(i).contains("Block_"))
 			{
-				String list2 = list.get(i);
-				String[] array2 = list2.split(",");
-				
-				ArrayList<String> arrayList2 = new ArrayList<>();
-				
-				for(int j = 0; j < array2.length-2; j++)
-					arrayList2.add(array2[2+j].toString());
+				String[] array2 = splitter(list, i);
+				ArrayList<String> arrayList2 = listEntry(array2);
 				
 				block.put(array2[1], arrayList2);
 			}
 			else if(list.get(i).contains("Tool_"))
 			{
-				String list3 = list.get(i);
-				String[] array3 = list3.split(",");
-				
-				ArrayList<String> arrayList3 = new ArrayList<>();
-				
-				for(int j = 0; j < array3.length-2; j++)
-					arrayList3.add(array3[2+j].toString());
+				String[] array3 = splitter(list, i);
+				ArrayList<String> arrayList3 = listEntry(array3);
 				
 				tool.put(array3[1], arrayList3);
 			}
 			else if(list.get(i).contains("Defense_"))
 			{
-				String list4 = list.get(i);
-				String[] array4 = list4.split(",");
-				
-				ArrayList<String> arrayList4 = new ArrayList<>();
-				
-				for(int j = 0; j < array4.length-2; j++)
-					arrayList4.add(array4[2+j].toString());
+				String[] array4 = splitter(list, i);
+				ArrayList<String> arrayList4 = listEntry(array4);
 				
 				defense.put(array4[1], arrayList4);
 			}
 			else if(list.get(i).contains("Mechanism_"))
 			{
-				String list5 = list.get(i);
-				String[] array5 = list5.split(",");
-				
-				ArrayList<String> arrayList5 = new ArrayList<>();
-				
-				for(int j = 0; j < array5.length-2; j++)
-					arrayList5.add(array5[2+j].toString());
+				String[] array5 = splitter(list, i);
+				ArrayList<String> arrayList5 = listEntry(array5);
 				
 				mechanism.put(array5[1], arrayList5);
 			}
 			else if(list.get(i).contains("Food_"))
 			{
-				String list6 = list.get(i);
-				String[] array6 = list6.split(",");
-				
-				ArrayList<String> arrayList6 = new ArrayList<>();
-				
-				for(int j = 0; j < array6.length-2; j++)
-					arrayList6.add(array6[2+j].toString());
+				String[] array6 = splitter(list, i);
+				ArrayList<String> arrayList6 = listEntry(array6);
 				
 				food.put(array6[1], arrayList6);
 			}
 			else if(list.get(i).contains("Other_"))
 			{
-				String list7 = list.get(i);
-				String[] array7 = list7.split(",");
-				
-				ArrayList<String> arrayList7 = new ArrayList<>();
-				
-				for(int j = 0; j < array7.length-2; j++)
-					arrayList7.add(array7[2+j].toString());
+				String[] array7 = splitter(list, i);
+				ArrayList<String> arrayList7 = listEntry(array7);
 				
 				other.put(array7[1], arrayList7);
 			}
 			else if(list.get(i).contains("Dye_"))
 			{
-				String list8 = list.get(i);
-				String[] array8 = list8.split(",");
-				
-				ArrayList<String> arrayList8 = new ArrayList<>();
-				
-				for(int j = 0; j < array8.length-2; j++)
-					arrayList8.add(array8[2+j].toString());
+				String[] array8 = splitter(list, i);
+				ArrayList<String> arrayList8 = listEntry(array8);
 				
 				dye.put(array8[1], arrayList8);
 			}
 			else if(list.get(i).contains("Wool_"))
 			{
-				String list9 = list.get(i);
-				String[] array9 = list9.split(",");
-				
-				ArrayList<String> arrayList9 = new ArrayList<>();
-				
-				for(int j = 0; j < array9.length-2; j++)
-					arrayList9.add(array9[2+j].toString());
+				String[] array9 = splitter(list, i);
+				ArrayList<String> arrayList9 = listEntry(array9);
 				
 				wool.put(array9[1], arrayList9);
 			}
 			else if(list.get(i).contains("Brewing_"))
 			{
-				String list10 = list.get(i);
-				String[] array10 = list10.split(",");
-				
-				ArrayList<String> arrayList10 = new ArrayList<>();
-				
-				for(int j = 0; j < array10.length-2; j++)
-					arrayList10.add(array10[2+j].toString());
+				String[] array10 = splitter(list, i);
+				ArrayList<String> arrayList10 = listEntry(array10);
 				
 				brewing.put(array10[1], arrayList10);
 			}
@@ -217,214 +166,127 @@ public class Game
 		HashMap<String, ArrayList<String>> signs = new HashMap<>();
 		HashMap<String, ArrayList<String>> misc = new HashMap<>();
 		
-		
 		for(int i = 0; i < list.size(); i++)
 		{
 			if(list.get(i).contains("Bombs_"))
 			{
-				String list1 = list.get(i);
-				String[] array1 = list1.split(",");
-				
-				ArrayList<String> arrayList1 = new ArrayList<>();
-				
-				for(int j = 0; j < array1.length-2; j++)
-					arrayList1.add(array1[2+j].toString());
+				String[] array1 = splitter(list, i);
+				ArrayList<String> arrayList1 = listEntry(array1);
 				
 				bombs.put(array1[1], arrayList1);
 			}
 			else if(list.get(i).contains("Fences_"))
 			{
-				String list2 = list.get(i);
-				String[] array2 = list2.split(",");
-				
-				ArrayList<String> arrayList2 = new ArrayList<>();
-				
-				for(int j = 0; j < array2.length-2; j++)
-					arrayList2.add(array2[2+j].toString());
+				String[] array2 = splitter(list, i);
+				ArrayList<String> arrayList2 = listEntry(array2);
 				
 				fences.put(array2[1], arrayList2);
 			}
 			else if(list.get(i).contains("Sprinklers_"))
 			{
-				String list3 = list.get(i);
-				String[] array3 = list3.split(",");
-				
-				ArrayList<String> arrayList3 = new ArrayList<>();
-				
-				for(int j = 0; j < array3.length-2; j++)
-					arrayList3.add(array3[2+j].toString());
+				String[] array3 = splitter(list, i);
+				ArrayList<String> arrayList3 = listEntry(array3);
 				
 				sprinklers.put(array3[1], arrayList3);
 			}
 			else if(list.get(i).contains("Artisan Equipment_"))
 			{
-				String list4 = list.get(i);
-				String[] array4 = list4.split(",");
-				
-				ArrayList<String> arrayList4 = new ArrayList<>();
-				
-				for(int j = 0; j < array4.length-2; j++)
-					arrayList4.add(array4[2+j].toString());
+				String[] array4 = splitter(list, i);
+				ArrayList<String> arrayList4 = listEntry(array4);
 				
 				artisanEquipment.put(array4[1], arrayList4);
 			}
 			else if(list.get(i).contains("Fertilizer_"))
 			{
-				String list5 = list.get(i);
-				String[] array5 = list5.split(",");
-				
-				ArrayList<String> arrayList5 = new ArrayList<>();
-				
-				for(int j = 0; j < array5.length-2; j++)
-					arrayList5.add(array5[2+j].toString());
+				String[] array5 = splitter(list, i);
+				ArrayList<String> arrayList5 = listEntry(array5);
 				
 				fertilizer.put(array5[1], arrayList5);
 			}
 			else if(list.get(i).contains("Seeds_"))
 			{
-				String list6 = list.get(i);
-				String[] array6 = list6.split(",");
-				
-				ArrayList<String> arrayList6 = new ArrayList<>();
-				
-				for(int j = 0; j < array6.length-2; j++)
-					arrayList6.add(array6[2+j].toString());
+				String[] array6 = splitter(list, i);
+				ArrayList<String> arrayList6 = listEntry(array6);
 				
 				seeds.put(array6[1], arrayList6);
 			}
 			else if(list.get(i).contains("Decor_"))
 			{
-				String list7 = list.get(i);
-				String[] array7 = list7.split(",");
-				
-				ArrayList<String> arrayList7 = new ArrayList<>();
-				
-				for(int j = 0; j < array7.length-2; j++)
-					arrayList7.add(array7[2+j].toString());
+				String[] array7 = splitter(list, i);
+				ArrayList<String> arrayList7 = listEntry(array7);
 				
 				decor.put(array7[1], arrayList7);
 			}
 			else if(list.get(i).contains("Fishing_"))
 			{
-				String list8 = list.get(i);
-				String[] array8 = list8.split(",");
-				
-				ArrayList<String> arrayList8 = new ArrayList<>();
-				
-				for(int j = 0; j < array8.length-2; j++)
-					arrayList8.add(array8[2+j].toString());
+				String[] array8 = splitter(list, i);
+				ArrayList<String> arrayList8 = listEntry(array8);
 				
 				fishing.put(array8[1], arrayList8);
 			}
 			else if(list.get(i).contains("Rings_"))
 			{
-				String list9 = list.get(i);
-				String[] array9 = list9.split(",");
-				
-				ArrayList<String> arrayList9 = new ArrayList<>();
-				
-				for(int j = 0; j < array9.length-2; j++)
-					arrayList9.add(array9[2+j].toString());
+				String[] array9 = splitter(list, i);
+				ArrayList<String> arrayList9 = listEntry(array9);
 				
 				rings.put(array9[1], arrayList9);
 			}
 			else if(list.get(i).contains("Edible Items_"))
 			{
-				String list10 = list.get(i);
-				String[] array10 = list10.split(",");
-				
-				ArrayList<String> arrayList10 = new ArrayList<>();
-				
-				for(int j = 0; j < array10.length-2; j++)
-					arrayList10.add(array10[2+j].toString());
+				String[] array10 = splitter(list, i);
+				ArrayList<String> arrayList10 = listEntry(array10);
 				
 				edibleItems.put(array10[1], arrayList10);
 			}
 			else if(list.get(i).contains("Consumables_"))
 			{
-				String list11 = list.get(i);
-				String[] array11 = list11.split(",");
-				
-				ArrayList<String> arrayList11 = new ArrayList<>();
-				
-				for(int j = 0; j < array11.length-2; j++)
-					arrayList11.add(array11[2+j].toString());
+				String[] array11 = splitter(list, i);
+				ArrayList<String> arrayList11 = listEntry(array11);
 				
 				consumables.put(array11[1], arrayList11);
 			}
 			else if(list.get(i).contains("Lighting_"))
 			{
-				String list12 = list.get(i);
-				String[] array12 = list12.split(",");
-				
-				ArrayList<String> arrayList12 = new ArrayList<>();
-				
-				for(int j = 0; j < array12.length-2; j++)
-					arrayList12.add(array12[2+j].toString());
+				String[] array12 = splitter(list, i);
+				ArrayList<String> arrayList12 = listEntry(array12);
 				
 				lighting.put(array12[1], arrayList12);
 			}
 			else if(list.get(i).contains("Refining Equipment_"))
 			{
-				String list13 = list.get(i);
-				String[] array13 = list13.split(",");
-				
-				ArrayList<String> arrayList13 = new ArrayList<>();
-				
-				for(int j = 0; j < array13.length-2; j++)
-					arrayList13.add(array13[2+j].toString());
+				String[] array13 = splitter(list, i);
+				ArrayList<String> arrayList13 = listEntry(array13);
 				
 				refiningEquipment.put(array13[1], arrayList13);
 			}
 			else if(list.get(i).contains("Furniture_"))
 			{
-				String list14 = list.get(i);
-				String[] array14 = list14.split(",");
-				
-				ArrayList<String> arrayList14 = new ArrayList<>();
-				
-				for(int j = 0; j < array14.length-2; j++)
-					arrayList14.add(array14[2+j].toString());
+				String[] array14 = splitter(list, i);
+				ArrayList<String> arrayList14 = listEntry(array14);
 				
 				furniture.put(array14[1], arrayList14);
 			}
 			else if(list.get(i).contains("Storage Equipment_"))
 			{
-				String list15 = list.get(i);
-				String[] array15 = list15.split(",");
-				
-				ArrayList<String> arrayList15 = new ArrayList<>();
-				
-				for(int j = 0; j < array15.length-2; j++)
-					arrayList15.add(array15[2+j].toString());
+				String[] array15 = splitter(list, i);
+				ArrayList<String> arrayList15 = listEntry(array15);
 				
 				storageEquipment.put(array15[1], arrayList15);
 			}
 			else if(list.get(i).contains("Signs_"))
 			{
-				String list16 = list.get(i);
-				String[] array16 = list16.split(",");
-				
-				ArrayList<String> arrayList16 = new ArrayList<>();
-				
-				for(int j = 0; j < array16.length-2; j++)
-					arrayList16.add(array16[2+j].toString());
+				String[] array16 = splitter(list, i);
+				ArrayList<String> arrayList16 = listEntry(array16);
 				
 				signs.put(array16[1], arrayList16);
 			}
 			else if(list.get(i).contains("Misc_"))
 			{
-				String list17 = list.get(i);
-				String[] array17 = list17.split(",");
-				
-				ArrayList<String> arrayList17 = new ArrayList<>();
-				
-				for(int j = 0; j < array17.length-2; j++)
-					arrayList17.add(array17[2+j].toString());
+				String[] array17 = splitter(list, i);
+				ArrayList<String> arrayList17 = listEntry(array17);
 				
 				misc.put(array17[1], arrayList17);
 			}
-			
 		}
 		
 		if(category.equals("Bombs"))
@@ -502,21 +364,24 @@ public class Game
 		
 	}
 	
-	public static Map<String, ArrayList<String>> sorting(ArrayList<String> list, int i)
+	public static String[] splitter(ArrayList<String> list, int i)
 	{
 		String string = list.get(i);
 		String[] array = string.split(",");
-			
+		
+		return array;
+	}
+	
+	public static ArrayList<String> listEntry(String[] array)
+	{
 		ArrayList<String> arrayList = new ArrayList<>();
-			
+		
 		for(int j = 0; j < array.length-2; j++)
+		{
 			arrayList.add(array[2+j].toString());
-			
-		Map<String, ArrayList<String>> entry = new HashMap<>();
-			
-		entry.put(array[1], arrayList);
-			
-		return entry;
+		}
+		
+		return arrayList;
 	}
 	
 	public static ArrayList<String> readWithBR(String csvFile) throws UnsupportedOperationException
@@ -538,5 +403,4 @@ public class Game
 		
 		return list;
 	}
-
 }
